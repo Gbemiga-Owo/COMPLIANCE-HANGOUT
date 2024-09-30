@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>COMPLIANCE HANGOUT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #selectButton {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #selectButton:hover {
+            background-color: #0056b3;
+        }
+
+        /* New CSS for disabling the button */
+        #selectButton[disabled] {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>COMPLIANCE HANGOUT</h1>
+    <button id="selectButton">Select Item</button>
+    <p id="result"></p>
+
+    <script>
+        const items = ["LIONS", "TIGERS", "WOLVES", "PANTHERS"];
+        let buttonClicked = false; // Track if the button has been clicked
+
+        const selectButton = document.getElementById("selectButton");
+        const resultElement = document.getElementById("result");
+
+        selectButton.addEventListener("click", function() {
+            if (!buttonClicked) { // Check if the button has not been clicked
+                const randomIndex = Math.floor(Math.random() * items.length);
+                const selectedItem = items[randomIndex];
+                resultElement.innerText = `Selected Item: ${selectedItem}`;
+                
+                // Disable the button
+                selectButton.disabled = true;
+                buttonClicked = true;
+            }
+        });
+    </script>
+</body>
+</html>
